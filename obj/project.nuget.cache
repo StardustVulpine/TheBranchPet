@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "dgSpecHash": "yfQIotIrzIg=",
+  "success": false,
+  "projectFilePath": "D:\\home\\figus\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\TheBranchPet\\TheBranchPet.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1101",
+      "level": "Error",
+      "message": "Unable to find package tModLoader.CodeAssist. No packages exist with this id in source(s): Microsoft Visual Studio Offline Packages",
+      "libraryId": "tModLoader.CodeAssist",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
+}
