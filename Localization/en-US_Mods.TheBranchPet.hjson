@@ -2,7 +2,7 @@
 
 Items: {
 	BasicSword: {
-		DisplayName: "Basic Sword"
+		DisplayName: Basic Sword
 		Tooltip:
 			'''
 			Template of an item
@@ -10,4 +10,18 @@ Items: {
 			It's snowing on Mt.Fuji
 			'''
 	}
+
+	TheBranchPetItem: {
+		DisplayName: The Branch Pet Item
+		Tooltip: Summons The Branch pet
+	}
 }
+
+Buffs: {
+	TheBranchPetBuff: {
+		DisplayName: The Branch Pet
+		Description: Mods.TheBranchPet.Buffs.TheBranchPetBuff.Description
+	}
+}
+
+Projectiles.TheBranchPetProjectile.DisplayName: The Branch
