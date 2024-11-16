@@ -12,26 +12,24 @@ namespace TheBranchPet.Content.Pets.TheBranchPet
             Main.projPet[Projectile.type] = true;
             
             ProjectileID.Sets.CharacterPreviewAnimations[Projectile.type] = ProjectileID.Sets.SimpleLoop(
-                0,Main.projFrames[Projectile.type], // Frames range for movement animation
-                4,true)
-                .WithOffset(-10f, -10f)
+                0, Main.projFrames[Projectile.type], // Frames range for movement animation
+                6, true)
+                .WithOffset(-10f, 0f)
                 .WithSpriteDirection(-1)
-                .WithCode(DelegateMethods.CharacterPreview.Float)
                 .WhenNotSelected(0, 0); // Frames range for idle animation
-            
         }
 
         public override void SetDefaults()
         {
-            Projectile.CloneDefaults(ProjectileID.Bunny);
-            AIType = ProjectileID.Bunny;
+            Projectile.CloneDefaults(ProjectileID.DynamiteKitten);
+            AIType = ProjectileID.BlackCat;
+            DrawOriginOffsetY = -9;
         }
 
         public override bool PreAI()
         {
             Player player = Main.player[Projectile.owner];
-            player.bunny = false;
-            
+            player.blackCat = false;
             return true;
         }
 

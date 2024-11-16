@@ -13,7 +13,12 @@ Items: {
 
 	TheBranchPetItem: {
 		DisplayName: The Branch Pet Item
-		Tooltip: Summons The Branch pet
+		Tooltip: 
+		    '''
+		    Summons woody friend to follow you
+		    ---
+		    UwU_Konar.png
+		    '''
 	}
 }
 
