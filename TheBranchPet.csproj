@@ -11,6 +11,12 @@
 	<!-- References -->
 	<ItemGroup>
 	  <Folder Include="Content\Pets\" />
+	  <Folder Include="Libraries\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Reference Include="SVLib">
+	    <HintPath>..\ModAssemblies\SVLib_v0.1.dll</HintPath>
+	  </Reference>
 	</ItemGroup>
 
 </Project>

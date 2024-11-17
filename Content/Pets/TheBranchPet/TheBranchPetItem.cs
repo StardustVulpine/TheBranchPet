@@ -15,12 +15,15 @@ namespace TheBranchPet.Content.Pets.TheBranchPet
             
             Item.shoot = ModContent.ProjectileType<TheBranchPetProjectile>();
             Item.buffType = ModContent.BuffType<TheBranchPetBuff>();
+            
         }
         
         public override void AddRecipes()
         {
             CreateRecipe(1)
-                .AddIngredient(ItemID.DirtBlock, 10)
+                .AddIngredient(ItemID.Wood, 25)
+                .AddIngredient(ItemID.Acorn, 10)
+                .AddIngredient(ItemID.Ectoplasm, 2)
                 .AddTile(TileID.WorkBenches)
                 .Register();
         }

@@ -1,3 +1,5 @@
 displayName = The Branch Pet
 author = Stardust Vulpine
 version = 0.1
+homepage = https://example.com
+modReferences = SVLib

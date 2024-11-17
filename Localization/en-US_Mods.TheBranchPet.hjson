@@ -12,20 +12,22 @@ Items: {
 	}
 
 	TheBranchPetItem: {
-		DisplayName: The Branch Pet Item
-		Tooltip: 
-		    '''
-		    Summons woody friend to follow you
-		    ---
-		    UwU_Konar.png
-		    '''
+		DisplayName: Spirited Branch
+		Tooltip:
+			'''
+			Summons spirit enriched woody friend to follow you.
+
+			*Strangely vibrates when held in hand*
+			---
+			"UwU_Konar.png"
+			'''
 	}
 }
 
 Buffs: {
 	TheBranchPetBuff: {
-		DisplayName: The Branch Pet
-		Description: Mods.TheBranchPet.Buffs.TheBranchPetBuff.Description
+		DisplayName: Ghost of the Tree
+		Description: Strange wood spirit follows you.
 	}
 }
 

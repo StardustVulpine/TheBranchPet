@@ -12,10 +12,5 @@ namespace TheBranchPet
 	public class TheBranchPet : Mod
 	{
 		public const string AssetPath = $"{nameof(TheBranchPet)}/Content/";
-
-		public static int TheBranchPetItemId;
-
-
-		
 	}
 }
