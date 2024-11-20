@@ -1,32 +1,30 @@
-using System.Drawing;
+using System.Diagnostics.CodeAnalysis;
+using Microsoft.Build.Construction;
+using Microsoft.Build.Evaluation;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using SVLib;
-    
-    
+
 namespace TheBranchPet.Content.Pets.TheBranchPet
 {
+    [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global")]
     public class TheBranchPetProjectile : ModProjectile
     {
+        private float AirTime {get => Projectile.ai[0]; set => Projectile.ai[0] = value; }
         
         public override void SetStaticDefaults()
         {
-            Main.projFrames[Projectile.type] = 4;
+            Main.projFrames[Projectile.type] = 5;
             Main.projPet[Projectile.type] = true;
             
             ProjectileID.Sets.CharacterPreviewAnimations[Projectile.type] = ProjectileID.Sets.SimpleLoop(
-                0, Main.projFrames[Projectile.type], // Frames range for movement animation
+                0, 4, // Frames range for movement animation
                 6, true)
                 .WithOffset(-10f, 0f)
                 .WithSpriteDirection(-1)
                 .WhenNotSelected(0, 0); // Frames range for idle animation
-
-            ProjectileID.Sets.SimpleLoop(
-                0, Main.projFrames[Projectile.type], // Frames range for movement animation
-                6, true)
-                .WhenNotSelected(0, 0)
-                .WhenSelected(0, 4);
+            
         }
 
         public override void SetDefaults()
@@ -36,14 +34,16 @@ namespace TheBranchPet.Content.Pets.TheBranchPet
             DrawOriginOffsetY = -9;
         }
         
-
+        
+        
         public override bool PreAI()
         {
             Player player = Main.player[Projectile.owner];
             player.blackCat = false;
             return true;
         }
-
+    
+        // This method updates once per frame, 60 times per second
         public override void AI()
         {
             Player player = Main.player[Projectile.owner];
@@ -53,49 +53,74 @@ namespace TheBranchPet.Content.Pets.TheBranchPet
                 Projectile.timeLeft = 2;
             }
             Visuals();
+            
+            // Main.NewText($"Frame: {Projectile.frame}, Counter: {Projectile.frameCounter}");
         }
-
+ 
         private void Visuals()
         {
             Player player = Main.player[Projectile.owner];
 
             bool isOnGround = PlayerUtils.IsPlayerOnGround(player);
+            bool isFlying = false;
+
+            // Main.NewText(isOnGround ? "Is On Ground!" : "Is Not On Ground!");
             
-            Main.NewText(isOnGround ? "Is On Ground!" : "Is Not On Ground!");
             
-            int frameSpeed = 5;
+            if (!isOnGround && player.velocity.Y != 0f)
+            {
+                AirTime++;
+                if (AirTime > 10f)
+                {
+                    isFlying = true;
+                }
+            }
+            else
+            {
+                AirTime = 0;
+                isFlying = false;
+            }
+            
+            // Main.NewText(isFlying ? "Player is flying!" : "Not Flying!");
+            
+            int frameSpeed = 10;
+            int frameStart;
+            int frameEnd;
+
+            if (isOnGround && !isFlying)
+            {
+                frameStart = 0;
+                frameEnd = 3;
+            }
+            else if (!isOnGround && !isFlying)
+            {
+                frameStart = 0;
+                frameEnd = 3;
+            }
+            else
+            {
+                frameStart = 4;
+                frameEnd = 4;
+            }
             
             if (Projectile.frameCounter >= frameSpeed)
             {
                 Projectile.frameCounter = 0;
                 Projectile.frame++;
 
-                if (Projectile.frame >= Main.projFrames[Projectile.type])
+                if (Projectile.frame > frameEnd || Projectile.frame < frameStart)
                 {
-                    Projectile.frame = 0;
+                    Projectile.frame = frameStart;
                 }
             }
-
-
+            
+            if (Projectile.frame < frameStart || Projectile.frame > frameEnd)
+            {
+                Projectile.frame = frameStart;
+            }
+            
         }
         
-        /*/// <summary>
-        /// Method to check if player is standing on solid ground or not
-        /// </summary>
-        /// <param name="player"></param>
-        /// <returns>True if is on ground or false if not</returns>
-        private bool IsPlayerOnGround(Player player)
-        {
-            // Get the tile directly below the player's feet
-            int tileX = (int)(player.position.X + player.width / 2) / 16; // Horizontal center of player
-            int tileY = (int)(player.position.Y + player.height + 1) / 16; // Bottom edge of player
-
-            // Get the tile at the calculated position
-            Tile tile = Main.tile[tileX, tileY];
-
-            // Check if the tile is active and solid (indicates ground)
-            return tile != null && tile.HasUnactuatedTile && Main.tileSolid[tile.TileType];
-        }*/
         
     }
 }

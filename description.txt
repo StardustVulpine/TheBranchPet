@@ -1,1 +1,5 @@
-Modify this file with a description of your mod.
+My first mod. Adds pet based on shitpos concept art made years ago.
+
+Craft summon item using 25 wood, 10 acorns and 2 ectoplasm.
+
+Require SVLib mod to function.

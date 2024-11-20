@@ -12,7 +12,7 @@ Items: {
 	}
 
 	TheBranchPetItem: {
-		DisplayName: Spirited Branch
+		DisplayName: Strange Stick
 		Tooltip:
 			'''
 			Summons spirit enriched woody friend to follow you.
@@ -31,4 +31,4 @@ Buffs: {
 	}
 }
 
-Projectiles.TheBranchPetProjectile.DisplayName: The Branch
+Projectiles.TheBranchPetProjectile.DisplayName: Spiritted Wood

@@ -1,4 +1,4 @@
-using TheBranchPet.Content.Items;
+using TheBranchPet.Content;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;

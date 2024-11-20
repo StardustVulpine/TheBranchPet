@@ -1,5 +1,4 @@
-displayName = The Branch Pet
+displayName = Pet - Spiritted Branch
 author = Stardust Vulpine
 version = 0.1
-homepage = https://example.com
 modReferences = SVLib
